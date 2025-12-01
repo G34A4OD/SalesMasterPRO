@@ -1,6 +1,6 @@
 # Etapa 1: Construcción (Usa Maven para crear el .jar)
 FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
+COPY salesmasterpro .
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Ejecución (Usa Java para correr la app)
