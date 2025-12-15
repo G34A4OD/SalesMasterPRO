@@ -82,3 +82,20 @@ CREATE TABLE IF NOT EXISTS factura (
 
 );
 
+-- USERS (para autenticación JWT)
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(120) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+-- MASCOTAS
+CREATE TABLE IF NOT EXISTS mascotas (
+    id SERIAL PRIMARY KEY,
+    alias VARCHAR(100) NOT NULL,
+    especie VARCHAR(80) NOT NULL,
+    raza VARCHAR(80) NOT NULL,
+    foto_url VARCHAR(255)
+);
+
