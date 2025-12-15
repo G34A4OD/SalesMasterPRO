@@ -2,6 +2,7 @@ package com.salesmaster.salesmasterpro.controller;
 
 import com.salesmaster.salesmasterpro.dto.LoginRequest;
 import com.salesmaster.salesmasterpro.dto.LoginResponse;
+import com.salesmaster.salesmasterpro.dto.RegisterRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -38,6 +39,19 @@ public class AuthController {
                 .build();
 
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping({"/signup", "/register"})
+    @Operation(summary = "Registro básico", description = "Registra un usuario y retorna un token simulado.")
+    public ResponseEntity<LoginResponse> register(@Valid @RequestBody RegisterRequest request) {
+        // Simulación de alta. En un escenario real se persistiría y se generaría un token JWT.
+        LoginResponse response = LoginResponse.builder()
+                .message("Registro exitoso")
+                .username(request.getUsername())
+                .token("dummy-token")
+                .build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
 
